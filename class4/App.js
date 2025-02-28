@@ -4,29 +4,31 @@ import { Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-nativ
 export default function App() {
   const [num1, setNum1] = useState('');
   const [num2, setNum2] = useState('');
+  const [num3, setNum3] = useState('');
   const [result, setResult] = useState('');
   const [isVisible, setIsVisible] = useState(true);
 
   const handleOperation = (operator) => {
     const number1 = parseFloat(num1);
     const number2 = parseFloat(num2);
-    if (isNaN(number1) || isNaN(number2)) {
+    const number3 = parseFloat(num3);
+    if (isNaN(number1) || isNaN(number2) || isNaN(number3)) {
       setResult('Invalid Input');
       return;
     }
 
     switch (operator) {
       case '+':
-        setResult((number1 + number2).toString());
+        setResult((number1 + number2 + number3).toString());
         break;
       case '-':
-        setResult((number1 - number2).toString());
+        setResult((number1 - number2 - number3).toString());
         break;
       case '*':
-        setResult((number1 * number2).toString());
+        setResult((number1 * number2 * number3).toString());
         break;
       case '/':
-        setResult(number2 !== 0 ? (number1 / number2).toString() : 'Error');
+        setResult(number2 !== 0 && number3 !== 0 ? (number1 / number2 / number3).toString() : 'Error');
         break;
       default:
         setResult('Error');
@@ -36,6 +38,7 @@ export default function App() {
   const resetCalculator = () => {
     setNum1('');
     setNum2('');
+    setNum3('');
     setResult('');
   };
 
@@ -65,6 +68,14 @@ export default function App() {
         placeholderTextColor='#aaa'
         value={num2}
         onChangeText={setNum2}
+      />
+      <TextInput
+        style={styles.input}
+        keyboardType='numeric'
+        placeholder='Enter third number'
+        placeholderTextColor='#aaa'
+        value={num3}
+        onChangeText={setNum3}
       />
       <View style={styles.buttonsContainer}>
         {['+', '-', '*', '/'].map((operator) => (
