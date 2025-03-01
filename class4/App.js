@@ -2,94 +2,50 @@ import React, { useState } from 'react';
 import { Text, TextInput, TouchableOpacity, View, StyleSheet } from 'react-native';
 
 export default function App() {
-  const [num1, setNum1] = useState('');
-  const [num2, setNum2] = useState('');
-  const [num3, setNum3] = useState('');
+  const [expression, setExpression] = useState('');
   const [result, setResult] = useState('');
-  const [isVisible, setIsVisible] = useState(true);
 
-  const handleOperation = (operator) => {
-    const number1 = parseFloat(num1);
-    const number2 = parseFloat(num2);
-    const number3 = parseFloat(num3);
-    if (isNaN(number1) || isNaN(number2) || isNaN(number3)) {
-      setResult('Invalid Input');
-      return;
-    }
-
-    switch (operator) {
-      case '+':
-        setResult((number1 + number2 + number3).toString());
-        break;
-      case '-':
-        setResult((number1 - number2 - number3).toString());
-        break;
-      case '*':
-        setResult((number1 * number2 * number3).toString());
-        break;
-      case '/':
-        setResult(number2 !== 0 && number3 !== 0 ? (number1 / number2 / number3).toString() : 'Error');
-        break;
-      default:
+  const handlePress = (btn) => {
+    if (btn === '=') {
+      try {
+        setResult(eval(expression).toString());
+      } catch {
         setResult('Error');
+      }
+    } else if (btn === 'C') {
+      setExpression('');
+      setResult('');
+    } else if (btn === '⌫') {
+      setExpression(expression.slice(0, -1));
+    } else {
+      setExpression(expression + btn);
     }
-  };
-
-  const resetCalculator = () => {
-    setNum1('');
-    setNum2('');
-    setNum3('');
-    setResult('');
   };
 
   return (
     <View style={styles.container}>
-      {isVisible && (
-        <View style={styles.displayContainer}>
-          <Text 
-            style={styles.result} 
-            onLongPress={() => setResult('')}>
-            {result}
-          </Text>
-        </View>
-      )}
+      <View style={styles.displayContainer}>
+        <Text style={styles.result}>{expression || '0'}</Text>
+        <Text style={styles.result}>{result}</Text>
+      </View>
       <TextInput
         style={styles.input}
         keyboardType='numeric'
-        placeholder='Enter first number'
+        placeholder='Enter expression'
         placeholderTextColor='#aaa'
-        value={num1}
-        onChangeText={setNum1}
-      />
-      <TextInput
-        style={styles.input}
-        keyboardType='numeric'
-        placeholder='Enter second number'
-        placeholderTextColor='#aaa'
-        value={num2}
-        onChangeText={setNum2}
-      />
-      <TextInput
-        style={styles.input}
-        keyboardType='numeric'
-        placeholder='Enter third number'
-        placeholderTextColor='#aaa'
-        value={num3}
-        onChangeText={setNum3}
+        value={expression}
+        onChangeText={setExpression}
       />
       <View style={styles.buttonsContainer}>
-        {['+', '-', '*', '/'].map((operator) => (
+        {['7', '8', '9', '+', '4', '5', '6', '-', '1', '2', '3', '*', '0', 'C', '=', '/', '⌫'].map((btn) => (
           <TouchableOpacity
-            key={operator}
+            key={btn}
             style={styles.button}
-            onPress={() => handleOperation(operator)}
+            onPress={() => handlePress(btn)}
           >
-            <Text style={styles.buttonText}>{operator}</Text>
+            <Text style={styles.buttonText}>{btn}</Text>
           </TouchableOpacity>
         ))}
-        <TouchableOpacity style={styles.button} onPress={resetCalculator}>
-          <Text style={styles.buttonText}>C</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -108,6 +64,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderBottomWidth: 1,
     borderBottomColor: '#333',
+    alignItems: 'center',
   },
   result: {
     fontSize: 40,
@@ -122,16 +79,16 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     paddingHorizontal: 10,
     borderRadius: 10,
+    textAlign: 'center',
   },
   buttonsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     width: '80%',
-    marginTop: 20,
   },
   button: {
-    flex: 1,
+    width: '22%',
     margin: 8,
     height: 60,
     backgroundColor: '#FF9800',
