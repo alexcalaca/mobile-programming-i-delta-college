@@ -40,3 +40,11 @@ Keep in mind that the `Task` functionality CANNOT BE DELETED.
 | UseState hook     | The useState hook is used to manage state within functional components, allowing components to store and update values dynamically, triggering re-renders when the state changes.  |
 
 ---
+> Class 04 - February 28th, 2025
+
+📝 Summary of Class 4
+Class 04 focused on simple projects related to building calculators. These projects likely covered the fundamentals of user input, mathematical operations, and displaying results.
+
+Key concepts would include managing state, handling user interactions (e.g., button presses), and implementing basic arithmetic functionality. The class provided hands-on experience with React Native, particularly for developing a super simple calculator app.
+
+---
