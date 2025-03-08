@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-
 export default function Counter() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const maxLimit = 10;
+  const minLimit = 1;
 
   const increment = () => {
     if (count < maxLimit) {
@@ -12,12 +12,30 @@ export default function Counter() {
     }
   };
 
+  const decrement = () => {
+    if (count > minLimit) {
+      setCount(count - 1);
+    }
+  };
+
+  const reset = () => {
+    setCount(1);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Counter</Text>
+      
+      <TouchableOpacity
+        onLongPress={() => setCount(1)}
+        delayLongPress={1000}
+      >
+
       <Text style={[styles.counter, count === maxLimit && styles.maxReached]}>
         {count}
       </Text>
+      </TouchableOpacity>
+
       <TouchableOpacity
         onPress={increment}
         style={[styles.button, count === maxLimit && styles.disabledButton]}
@@ -26,6 +44,18 @@ export default function Counter() {
         <Text style={styles.buttonText}>
           {count === maxLimit ? "Limit Reached" : "Increase"}
         </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={decrement}
+        style={[styles.button, count === minLimit && styles.disabledButton]}
+        disabled={count === minLimit}
+      >
+        <Text style={styles.buttonText}>
+          {count === minLimit ? "Limit Reached" : "Decrease"}
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={reset} style={styles.cleanButton}>
+        <Text style={styles.buttonText}>Clean</Text>
       </TouchableOpacity>
     </View>
   );
@@ -62,6 +92,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.5,
     shadowRadius: 10,
+    marginTop: 10,
   },
   buttonText: {
     fontSize: 18,
@@ -71,5 +102,12 @@ const styles = StyleSheet.create({
   disabledButton: {
     backgroundColor: "#44475A",
     shadowColor: "transparent",
+  },
+  cleanButton: {
+    backgroundColor: "#FF5370",
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    marginTop: 10,
   },
 });
