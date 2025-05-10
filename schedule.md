@@ -59,8 +59,8 @@ March 28st, 2025 - Multidisciplinary Week
 April 04th, 2025 - SP  
 
 ---
-> Class 07 - April 11th, 2025
-📝 Summary of Class 7: Review
+> Class 07 - April 11th, 2025  
+📝 Summary of Class 7: Review  
 
 ---
 
