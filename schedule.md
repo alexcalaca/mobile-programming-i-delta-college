@@ -48,3 +48,34 @@ Class 04 focused on simple projects related to building calculators. These proje
 Key concepts would include managing state, handling user interactions (e.g., button presses), and implementing basic arithmetic functionality. The class provided hands-on experience with React Native, particularly for developing a super simple calculator app.
 
 ---
+> Class 05
+
+---
+> Class 06 - March 14th, 2025
+---
+
+March 21st, 2025 - Personal  
+March 28st, 2025 - Multidisciplinary Week  
+April 04th, 2025 - SP  
+
+---
+> Class 07 - April 11th, 2025
+📝 Summary of Class 7: Review
+
+---
+
+April 18th, 2025 - Holiday
+
+---
+
+> Class 08 - April 25th, 2025
+📝 Summary of Class 08: Exam/Test
+
+---
+
+May 02nd, 2025 - Bridge holiday
+
+---
+
+> Class 09 - May 09th, 2025
+📝 Summary of Class 0: `SectionList` 
