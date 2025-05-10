@@ -77,5 +77,5 @@ May 02nd, 2025 - Bridge holiday
 
 ---
 
-> Class 09 - May 09th, 2025
-📝 Summary of Class 0: `SectionList` 
+> Class 09 - May 09th, 2025  
+📝 Summary of Class 0: `SectionList`   
