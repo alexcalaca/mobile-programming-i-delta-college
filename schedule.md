@@ -68,8 +68,8 @@ April 18th, 2025 - Holiday
 
 ---
 
-> Class 08 - April 25th, 2025
-📝 Summary of Class 08: Exam/Test
+> Class 08 - April 25th, 2025  
+📝 Summary of Class 08: Exam/Test  
 
 ---
 
